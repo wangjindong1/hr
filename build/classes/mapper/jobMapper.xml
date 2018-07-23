@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.iotek.ssm.dao.JobDao">
+
+	<insert id="insertJob" parameterType="Job">
+		insert into jobs(name,level,department_id) 
+		values(#{name},#{level},#{department.id})
+	</insert>
+	
+	<delete id="deleteJobById" parameterType="int">
+		delete from jobs where id=#{id}
+	</delete>
+	
+	<update id="updateJobById" parameterType="Job">
+		update jobs 
+		set 
+		name=#{name},level=#{level},department_id=#{department.id} 
+		where id=#{id}
+	</update>
+	
+	<select id="queryAllJobs" resultType="Job">
+		SELECT 
+			j.id,
+			j.name,
+			j.level,
+			j.department_id "department.id",
+			d.name "department.name"
+		FROM 
+			jobs j,departments d 
+		WHERE 
+			j.department_id = d.id
+	</select>
+	
+	<select id="queryJobById" parameterType="int" resultType="Job">
+		SELECT 
+			j.id,
+			j.name,
+			j.level,
+			j.department_id "department.id",
+			d.name "department.name"
+		FROM 
+			jobs j,departments d 
+		WHERE 
+			j.department_id = d.id 
+		AND 
+			j.id=#{id}	
+	</select>
+</mapper>

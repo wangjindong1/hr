@@ -1,0 +1,20 @@
+@charset "UTF-8";
+.center{
+    position:absolute;
+    top:40%;
+    left:55%;
+    margin:-150px 0 0 -200px;
+    width:400px;
+    height:300px;
+}
+
+body{
+    background:url(../images/summer.jpg)  no-repeat center center;
+    background-size:cover;
+    background-attachment:fixed;
+    background-color:#CCCCCC;
+}
+
+td{
+	text-align:center;
+}
